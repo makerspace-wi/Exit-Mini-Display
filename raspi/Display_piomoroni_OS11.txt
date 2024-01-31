@@ -1,0 +1,65 @@
+# raspianOS lite installiert ------------ OS11 --
+# SPI & I2C enabled -----------------------------
+sudo raspi-config
+
+sudo apt update && sudo apt full-upgrade -y
+
+sudo reboot  # ----------------------------------
+
+# Mqtt ------------------------------------------
+sudo apt update && sudo apt install mosquitto-clients
+
+# Python ----------------------------------------
+sudo apt install python3-rpi.gpio python3-spidev python3-pip python3-pil python3-numpy
+
+sudo pip3 install paho-mqtt
+
+# Display HAT Mini ------------------------------
+sudo pip3 install displayhatmini
+
+# Python run ------------------------------------
+sudo nano /lib/systemd/system/mqtt_disp.service
+
+# Add the following lines in the file:
+
+[Unit]
+Description=Custom Python Service
+After=multi-user.target
+#Conflicts=getty@tty1.service
+ 
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/message_mqtt_disp.py
+#StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target
+
+#Save and exit the nano file using Ctrl+x,Y and ENTER.
+
+#Change the permissions on the configuration file to 644:
+
+sudo chmod +x /home/pi/message_mqtt_disp.py
+
+#Now all the tell the systemd to start the process on boot up :
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable mqtt_disp.service
+
+#Now reboot your Pi and the process should run:
+
+sudo systemctl reload mqtt_disp.service
+
+sudo systemctl stop mqtt_disp.service
+
+sudo systemctl start mqtt_disp.service
+
+sudo systemctl status mqtt_disp.service 
+
+# Pygame?----------------------------------------
+sudo apt-get install libsdl2-2.0-0
+sudo pip3 install pygame
+sudo reboot
+
+# -----------------------------------------------
