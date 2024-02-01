@@ -8,12 +8,12 @@ MQTT_TOPIC   | 'txp;0,0'     # Text position x,y [max. 320, 240]
 MQTT_TOPIC   | 'txs;0,0'     # Text size x,y [max. 320, 240]
 MQTT_TOPIC   | 'txc;0,0,0'   # Text color r,g,b [0 - 255]
 MQTT_TOPIC   | 'clc;'        # Clear display [+ text position = 0]
-MQTT_TOPIC   | 'del;'        # Delete text at lst position
+MQTT_TOPIC   | 'del;'        # Delete text at last position
 MQTT_TOPIC   | 'tfn;0'       # Text Font Nr.0
 MQTT_TOPIC   | 'tfh;20'      # Text Font height [20]
 MQTT_TOPIC   | 'bgb;1.0'     # Background brightness [0 - 1.0]
 MQTT_TOPIC   | 'bgc;0,0,0'   # Background color r,g,b [0 - 255]
-MQTT_TOPIC   | 'led;0,0,0'   # Led light r,g,b [0 - 1.0]
+MQTT_TOPIC   | 'led;0,0,0'   # Led r,g,b light [0 - 1.0]
 
  msg.topic - |  msg.publish ----------------
 MQTT_PUBLI   | 'DISP;POR;'   # publish after start
