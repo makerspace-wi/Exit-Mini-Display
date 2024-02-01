@@ -1,4 +1,4 @@
-# raspianOS lite installiert ------------ OS11 --
+# raspianOS lite (Legacy) installiert --- OS11 --
 # SPI & I2C enabled -----------------------------
 sudo raspi-config
 
@@ -20,7 +20,7 @@ sudo pip3 install displayhatmini
 # Python run ------------------------------------
 sudo nano /lib/systemd/system/mqtt_disp.service
 
-# Add the following lines in the file:
+#Â Add the following lines in the file:
 
 [Unit]
 Description=Custom Python Service
